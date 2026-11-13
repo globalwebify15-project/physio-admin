@@ -169,25 +169,20 @@ export default function AdminLayoutClient({
           sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
-        {/* Brand Header */}
-        <div className="h-20 border-b border-slate-100 flex items-center px-5 gap-3 bg-gradient-to-b from-teal-50/40 to-transparent">
-          <div className="w-10 h-10 rounded-xl bg-white border border-teal-100/80 flex items-center justify-center p-1 shadow-sm overflow-hidden shrink-0">
-            <Image 
-              src="/quickphysio24_logo.png" 
-              alt="QuickPhysio24" 
-              width={36} 
-              height={36} 
-              className="w-full h-full object-contain" 
-            />
-          </div>
-          <div>
-            <h1 className="font-extrabold text-slate-900 text-[15px] tracking-tight leading-none">
-              QuickPhysio<span className="text-teal-600">24</span>.com
-            </h1>
-            <span className="text-[10px] text-teal-700 font-bold uppercase tracking-wider bg-teal-50 px-2 py-0.5 rounded-full mt-1 inline-block border border-teal-100">
-              Admin Portal
-            </span>
-          </div>
+        {/* Brand Header: Logo Only (Prominent & Professional) */}
+        <div className="h-24 border-b border-slate-100 flex items-center justify-center px-4 bg-gradient-to-b from-teal-50/40 to-transparent">
+          <Link href="/admin/dashboard" className="flex items-center justify-center w-full group">
+            <div className="relative w-full h-16 flex items-center justify-center p-2 rounded-2xl bg-white border border-slate-100/90 shadow-xs group-hover:scale-[1.02] transition-transform">
+              <Image 
+                src="/quickphysio24_logo.png" 
+                alt="QuickPhysio24" 
+                width={180} 
+                height={60} 
+                priority
+                className="max-h-12 w-auto object-contain" 
+              />
+            </div>
+          </Link>
         </div>
 
         {/* Scrollable Navigation Area (Internal scroll only) */}
@@ -246,10 +241,18 @@ export default function AdminLayoutClient({
         </div>
       </aside>
 
+      {/* Mobile Backdrop Overlay */}
+      {sidebarOpen && (
+        <div 
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-30 lg:hidden transition-opacity"
+        />
+      )}
+
       {/* Main Workspace Frame (Offset by w-64 on desktop so sidebar is fixed) */}
       <div className="flex-1 flex flex-col min-w-0 min-h-screen lg:pl-64">
-        {/* Sticky Top Header Bar */}
-        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30 flex items-center justify-between px-6 lg:px-8">
+        {/* Sticky Top Header Bar with responsive pl-16 on mobile to avoid hamburger overlap */}
+        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30 flex items-center justify-between pl-16 pr-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">
               {SIDEBAR_ITEMS.find((item) => pathname === item.href)?.name || 'QuickPhysio24.com'}

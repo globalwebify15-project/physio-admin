@@ -113,42 +113,44 @@ export default async function CompliancePage({ params }: { params: Promise<{ slu
 
       {/* Main Header */}
       <header className="bg-white border-b border-slate-200/80 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-white border border-teal-100/90 p-1 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+        <div className="max-w-6xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3.5 group">
+            <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
               <Image
                 src="/quickphysio24_logo.png"
                 alt="QuickPhysio24 Logo"
-                width={38}
-                height={38}
+                width={56}
+                height={56}
                 priority
                 className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-base md:text-lg text-slate-900 tracking-tight leading-tight">QuickPhysio<span className="text-teal-600">24</span></span>
-                <span className="text-[10px] uppercase font-black px-1.5 py-0.5 rounded-sm bg-teal-50 text-teal-700 border border-teal-200/60 leading-none">
-                  Hospital Dept
+              <div className="flex items-center gap-2">
+                <span className="font-black text-lg md:text-2xl text-slate-900 tracking-tight leading-none">
+                  QuickPhysio<span className="text-teal-600">24</span>.com
                 </span>
               </div>
-              <p className="text-[11px] font-medium text-slate-500 leading-none mt-0.5">Synergy Global Hospital, Ranchi</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 leading-none mt-1">
+                Synergy Global Hospital, Ranchi
+              </p>
             </div>
           </Link>
 
-          <div className="flex items-center gap-2">
+          {/* Desktop Right Info (Hidden on mobile where floating bottom capsule provides quick access) */}
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:9110912544"
-              className="text-xs font-bold text-slate-600 hover:text-teal-700 bg-slate-100 hover:bg-slate-200/80 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5"
+              className="text-xs font-bold text-slate-700 hover:text-teal-700 bg-slate-100 hover:bg-slate-200/80 px-4 py-2 rounded-xl transition-all flex items-center gap-2"
             >
-              <PhoneCall size={12} className="text-teal-600" />
-              <span className="hidden sm:inline">Helpline</span>
+              <PhoneCall size={14} className="text-teal-600" />
+              <span>+91 91109 12544</span>
             </a>
             <Link
               href="/apk"
-              className="text-xs font-bold text-teal-700 bg-teal-50 border border-teal-200/80 hover:bg-teal-100 px-3.5 py-1.5 rounded-xl transition-all shadow-2xs"
+              className="text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 px-4 py-2 rounded-xl transition-all shadow-xs flex items-center gap-2"
             >
-              Download App
+              <span>Download App</span>
             </Link>
           </div>
         </div>

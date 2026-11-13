@@ -21,6 +21,16 @@ import {
 
 export default function ApkDownloadPage() {
   const [activeTab, setActiveTab] = useState<'preview' | 'downloads'>('preview');
+  const [downloadHost, setDownloadHost] = useState('https://quickphysio24.com');
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.origin) {
+      setDownloadHost(window.location.origin);
+    }
+  }, []);
+
+  const liveApkUrl = `${downloadHost}/Physio.apk`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(liveApkUrl)}`;
 
   const apkOptions = [
     {
@@ -57,8 +67,6 @@ export default function ApkDownloadPage() {
     },
   ];
 
-  const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=http://192.168.1.15:3001/app-release.apk";
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 text-slate-100 p-4 sm:p-8 selection:bg-teal-500 selection:text-white">
       <div className="max-w-6xl mx-auto">
@@ -86,7 +94,7 @@ export default function ApkDownloadPage() {
               ← Back to Clinic Home
             </Link>
             <a
-              href="/app-release.apk"
+              href="/Physio.apk"
               download="QuickPhysio24.apk"
               className="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs shadow-lg shadow-teal-500/20 flex items-center gap-2 transition-all"
             >
@@ -281,13 +289,13 @@ export default function ApkDownloadPage() {
                   Scan to Install on Android
                 </div>
                 <h3 className="text-lg font-extrabold text-white">
-                  Direct WiFi Install for Mobile
+                  Direct Mobile Download & Install
                 </h3>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Open your phone&apos;s camera or QR scanner while connected to WiFi to immediately download and install the build.
+                  Open your phone&apos;s camera or QR scanner to immediately download and install the official build.
                 </p>
-                <div className="mt-3 text-[11px] font-mono text-teal-300 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-700/50 inline-block">
-                  http://192.168.1.15:3001/app-release.apk
+                <div className="mt-3 text-[11px] font-mono text-teal-300 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-700/50 inline-block break-all">
+                  {liveApkUrl}
                 </div>
               </div>
             </div>
