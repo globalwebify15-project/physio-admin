@@ -14,7 +14,6 @@ import {
   CalendarCheck, 
   Star,
   Activity,
-  HeartPulse,
   ExternalLink,
   Sparkles,
   ArrowRight
@@ -81,10 +80,10 @@ export default function ApkDownloadPage() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/admin/dashboard"
+              href="/"
               className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/80 text-xs font-bold transition-colors"
             >
-              ← Admin Portal
+              ← Back to Clinic Home
             </Link>
             <a
               href="/app-release.apk"
@@ -126,9 +125,11 @@ export default function ApkDownloadPage() {
                 {/* Mobile Header */}
                 <div className="px-4 py-2.5 bg-white border-b border-slate-100 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center font-bold">
-                      <HeartPulse size={18} />
-                    </div>
+                    <img 
+                      src="/quickphysio24_logo.png" 
+                      alt="QuickPhysio24 Logo" 
+                      className="w-8 h-8 rounded-lg object-contain bg-white p-0.5 border border-slate-100 shrink-0" 
+                    />
                     <div>
                       <h4 className="text-xs font-black text-slate-900 leading-tight">QuickPhysio24</h4>
                       <span className="text-[9px] text-teal-700 font-bold">QuickPhysio24.com</span>

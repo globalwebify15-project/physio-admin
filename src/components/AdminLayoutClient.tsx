@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
@@ -170,8 +171,14 @@ export default function AdminLayoutClient({
       >
         {/* Brand Header */}
         <div className="h-20 border-b border-slate-100 flex items-center px-5 gap-3 bg-gradient-to-b from-teal-50/40 to-transparent">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-700 to-teal-500 flex items-center justify-center text-white shadow-md shadow-teal-700/20">
-            <HeartPulse size={22} className="animate-pulse-slow" />
+          <div className="w-10 h-10 rounded-xl bg-white border border-teal-100/80 flex items-center justify-center p-1 shadow-sm overflow-hidden shrink-0">
+            <Image 
+              src="/quickphysio24_logo.png" 
+              alt="QuickPhysio24" 
+              width={36} 
+              height={36} 
+              className="w-full h-full object-contain" 
+            />
           </div>
           <div>
             <h1 className="font-extrabold text-slate-900 text-[15px] tracking-tight leading-none">

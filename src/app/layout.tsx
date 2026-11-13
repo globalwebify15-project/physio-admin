@@ -18,6 +18,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "QuickPhysio24 - Admin & Clinical Operations Portal",
   description: "Enterprise management portal for QuickPhysio24 appointments, patients, and therapists.",
+  icons: {
+    icon: '/quickphysio24_logo.png',
+    apple: '/quickphysio24_logo.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

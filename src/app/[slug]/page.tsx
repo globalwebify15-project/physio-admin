@@ -1,6 +1,7 @@
 import React from 'react';
 import { connectDB, CMS } from 'database';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import {
   ShieldCheck,
@@ -16,10 +17,10 @@ import {
   Mail,
   Clock,
   ChevronRight,
-  CheckCircle2,
-  HeartPulse
+  CheckCircle2
 } from 'lucide-react';
 import { PrintPageButton, DeleteAccountForm } from '@/components/ComplianceInteractiveActions';
+import MobileComplianceCapsule from '@/components/MobileComplianceCapsule';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -112,40 +113,48 @@ export default async function CompliancePage({ params }: { params: Promise<{ slu
 
       {/* Main Header */}
       <header className="bg-white border-b border-slate-200/80 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95">
-        <div className="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-700 to-teal-500 flex items-center justify-center text-white shadow-sm shadow-teal-500/20 group-hover:scale-105 transition-transform">
-              <HeartPulse size={22} className="text-white" />
+            <div className="w-10 h-10 rounded-xl bg-white border border-teal-100/90 p-1 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+              <Image
+                src="/quickphysio24_logo.png"
+                alt="QuickPhysio24 Logo"
+                width={38}
+                height={38}
+                priority
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-lg text-slate-900 tracking-tight">QuickPhysio<span className="text-teal-600">24</span></span>
-                <span className="text-[10px] uppercase font-black px-1.5 py-0.5 rounded-sm bg-teal-50 text-teal-700 border border-teal-200/60">
+                <span className="font-extrabold text-base md:text-lg text-slate-900 tracking-tight leading-tight">QuickPhysio<span className="text-teal-600">24</span></span>
+                <span className="text-[10px] uppercase font-black px-1.5 py-0.5 rounded-sm bg-teal-50 text-teal-700 border border-teal-200/60 leading-none">
                   Hospital Dept
                 </span>
               </div>
-              <p className="text-[11px] font-medium text-slate-500 leading-none">Synergy Global Hospital, Ranchi</p>
+              <p className="text-[11px] font-medium text-slate-500 leading-none mt-0.5">Synergy Global Hospital, Ranchi</p>
             </div>
           </Link>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
+            <a
+              href="tel:9110912544"
+              className="text-xs font-bold text-slate-600 hover:text-teal-700 bg-slate-100 hover:bg-slate-200/80 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5"
+            >
+              <PhoneCall size={12} className="text-teal-600" />
+              <span className="hidden sm:inline">Helpline</span>
+            </a>
             <Link
               href="/apk"
-              className="text-xs font-bold text-teal-700 bg-teal-50 border border-teal-200 hover:bg-teal-100 px-3.5 py-2 rounded-xl transition-all"
+              className="text-xs font-bold text-teal-700 bg-teal-50 border border-teal-200/80 hover:bg-teal-100 px-3.5 py-1.5 rounded-xl transition-all shadow-2xs"
             >
               Download App
-            </Link>
-            <Link
-              href="/login"
-              className="text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 px-3.5 py-2 rounded-xl transition-all shadow-xs"
-            >
-              Admin Portal
             </Link>
           </div>
         </div>
 
-        {/* Horizontal Navigation Tabs */}
-        <div className="max-w-6xl mx-auto px-4 overflow-x-auto scrollbar-none border-t border-slate-100">
+        {/* Horizontal Navigation Tabs (Hidden on small mobile where the floating capsule modal is active) */}
+        <div className="max-w-6xl mx-auto px-4 overflow-x-auto scrollbar-none border-t border-slate-100 hidden md:block">
           <nav className="flex items-center gap-1 py-2 min-w-max">
             {COMPLIANCE_NAV.map((item) => {
               const Icon = item.icon;
@@ -438,6 +447,9 @@ export default async function CompliancePage({ params }: { params: Promise<{ slu
           </div>
         </div>
       </footer>
+
+      {/* Floating Capsule Modal for Mobile View */}
+      <MobileComplianceCapsule activeSlug={canonicalSlug} />
     </div>
   );
 }

@@ -49,7 +49,7 @@ export default function SmtpSettingsClient({
   const [isSavingRecipients, setIsSavingRecipients] = useState(false);
 
   // Live Test State
-  const [testEmail, setTestEmail] = useState('admin@globalwebify.com');
+  const [testEmail, setTestEmail] = useState('admin@quickphysio24.com');
   const [isTesting, setIsTesting] = useState(false);
   const [testResult, setTestResult] = useState<{
     status: 'idle' | 'success' | 'error';
@@ -402,7 +402,7 @@ export default function SmtpSettingsClient({
                 type="email"
                 value={testEmail}
                 onChange={(e) => setTestEmail(e.target.value)}
-                placeholder="Enter email to receive test message (e.g. admin@globalwebify.com)"
+                placeholder="Enter email to receive test message (e.g. admin@quickphysio24.com)"
                 className="flex-1 px-4 py-2.5 bg-slate-800/90 border border-slate-700 rounded-xl text-xs font-semibold text-white placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-teal-400"
               />
               <button
@@ -484,7 +484,7 @@ export default function SmtpSettingsClient({
                   required
                   value={emailsRaw}
                   onChange={(e) => setEmailsRaw(e.target.value)}
-                  placeholder="contact@quickphysio24.com, admin@globalwebify.com, drrajnish@quickphysio24.com"
+                  placeholder="contact@quickphysio24.com, admin@quickphysio24.com, drrajnish@quickphysio24.com"
                   className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
                 />
                 {/* Active Chips Preview */}
